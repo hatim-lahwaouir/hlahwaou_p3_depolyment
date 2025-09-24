@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: app1 
-        image: milokih351/app_p3:v1 
+        image: milokih351/app_p3:v2
         ports:
         - containerPort: 80
 ---
