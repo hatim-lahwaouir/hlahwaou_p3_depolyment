@@ -7,8 +7,9 @@ spec:
   entryPoints:
     - web 
   routes:
-    - match: HostRegexp(`^*$`)
+    - match: PathPrefix(`/`)  
       kind: Rule
       services:
         - name: app
           port: 80
+
