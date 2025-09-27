@@ -7,7 +7,6 @@ metadata:
     ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   rules:
-  - host: internal.path.to.argocd.io
     http:
       paths:
       - path: /
