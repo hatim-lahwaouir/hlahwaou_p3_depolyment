@@ -6,16 +6,9 @@ spec:
   entryPoints:
     - web 
   routes:
-    - match: Host(`app.com`)  
-      kind: Rule
-      services:
-        - name: app
-          port: 80
-      priority: 2
     - match: PathPrefix(`/`)  
       kind: Rule
       services:
         - name: argocd-server 
           port: 443 
-      priority: 1 
 
