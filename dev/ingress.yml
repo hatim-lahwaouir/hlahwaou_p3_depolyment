@@ -10,10 +10,8 @@ spec:
       kind: Rule
       services:
         - name: app
-      priority: 1
     - match: PathPrefix(`/argocd`) 
       kind: Rule
       services:
         - name: argocd-server 
           port: 80         
-      priority: 2 
