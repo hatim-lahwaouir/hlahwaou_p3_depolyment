@@ -11,4 +11,3 @@ spec:
       services:
         - name: app
           port: 80
-      priority: 22 
