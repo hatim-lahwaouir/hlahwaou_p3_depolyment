@@ -10,7 +10,7 @@ spec:
       kind: Rule
       services:
         - name: app
-    - match: PathPrefix(`/argocd`) 
+    - match: PathPrefix(`/`) 
       kind: Rule
       services:
         - name: argocd-server 
