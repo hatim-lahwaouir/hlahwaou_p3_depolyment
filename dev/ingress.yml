@@ -10,6 +10,7 @@ spec:
       kind: Rule
       services:
         - name: app
+          port: 80
     - match: PathPrefix(`/`) 
       kind: Rule
       services:
