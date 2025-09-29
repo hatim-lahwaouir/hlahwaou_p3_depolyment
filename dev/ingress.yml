@@ -1,16 +1,14 @@
-apiVersion: networking.k8s.io/v1 
-kind: Ingress
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
 metadata:
-  name: argocd-ingress
-  labels:
-    app: argocd
-  annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
+  name: app-ingress 
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        backend:
-          serviceName: argocd-server
-          servicePort: 80
+  entryPoints:
+    - web 
+  routes:
+    - match: HostRegexp(`^*$`)
+      kind: Rule
+      services:
+        - name: app
+          port: 80
+
