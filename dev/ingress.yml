@@ -1,23 +1,18 @@
-apiVersion: networking.k8s.io/v1beta1 
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-server-http
+  name: app 
   annotations:
-    kubernetes.io/ingress.class: contour-internal
-    ingress.kubernetes.io/force-ssl-redirect: "true"
+    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
   rules:
-  - host: internal.path.to.argocd.io
-    http:
+  - http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: argocd-server
+            name: app 
             port:
-              name: http
-  tls:
-  - hosts:
-    - internal.path.to.argocd.io
-    secretName: your-certificate-name
+              number: 80
+
