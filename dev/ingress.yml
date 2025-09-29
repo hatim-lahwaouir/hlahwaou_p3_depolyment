@@ -1,24 +1,16 @@
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
+apiVersion: extensions/v1beta1
+kind: Ingress
 metadata:
-  name: argocd-server
-  namespace: argocd
+  name: argocd-ingress
+  labels:
+    app: argocd
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
 spec:
-  entryPoints:
-    - websecure
-  routes:
-    - kind: Rule
-      match: Host(`argocd.127.0.0.1.nip.io`)
-      priority: 10
-      services:
-        - name: argocd-server
-          port: 80
-    - kind: Rule
-      match: Host(`argocd.127.0.0.1.nip.io`) && Header(`Content-Type`, `application/grpc`)
-      priority: 11
-      services:
-        - name: argocd-server
-          port: 80
-          scheme: h2c
-  tls:
-    certResolver: default
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: argocd-server
+          servicePort: 80
